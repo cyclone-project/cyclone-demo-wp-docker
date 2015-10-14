@@ -1,0 +1,16 @@
+mysql:
+  image: mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=password
+  expose:
+    - "3306"
+
+wordpress:
+  image: components/wordpress
+  environment:
+    - WORDPRESS_DB_PASSWORD=password
+  links:
+    - mysql
+  ports:
+    - 8080:80
+

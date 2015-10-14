@@ -1,0 +1,7 @@
+path: /var/www/html
+color: false
+disabled_commands:
+  - db drop
+core config:
+	dbuser: wpadminuser
+	dbpass: tastamam
