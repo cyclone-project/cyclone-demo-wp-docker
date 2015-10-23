@@ -1,14 +1,14 @@
 mysql:
   image: mysql
   environment:
-    - MYSQL_ROOT_PASSWORD=password
+    - MYSQL_ROOT_PASSWORD=tastamam
   expose:
     - "3306"
 
 wordpress:
-  image: components/wordpress
+  build: components/wordpress
   environment:
-    - WORDPRESS_DB_PASSWORD=password
+    - WORDPRESS_DB_PASSWORD=tastamam
   links:
     - mysql
   ports:

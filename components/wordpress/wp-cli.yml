@@ -5,3 +5,9 @@ disabled_commands:
 core config:
 	dbuser: wpadminuser
 	dbpass: tastamam
+	title: CYCLONE
+	admin_user: admin
+	admin_password: admin
+	admin_email: ilke.zilci@tu-berlin.de
+	url:/
+	
