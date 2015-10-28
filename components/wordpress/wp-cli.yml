@@ -1,13 +1,11 @@
-path: /var/www/html
-color: false
-disabled_commands:
-  - db drop
 core config:
-	dbuser: wpadminuser
-	dbpass: tastamam
-	title: CYCLONE
-	admin_user: admin
-	admin_password: admin
-	admin_email: ilke.zilci@tu-berlin.de
-	url:/
-	
+  dbname: wordpress
+  dbuser: root
+  dbpass: tastamam
+core install:
+    title: CYCLONE
+    admin_user: admin
+    admin_password: password
+    admin_email: ilke.zilci@tu-berlin.de  
+path: /var/www/html
+url: "http://localhost"

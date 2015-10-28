@@ -6,9 +6,11 @@
 #sudo mv wp-cli.phar /usr/local/bin/wp
 
 #configure wp-cli
-#inside the current working directory: wp-config.yml 
+#it takes the settings from the yml config file in the current working directory: wp-cli.yml 
 
-wp core install --path=/var/www/html --title=CYCLONE --admin_user=cycloneadmin --admin_password=mllzsnXMAZWioX --url=http://localhost --admin_email=ilke.zilci@tu-berlin.de --allow-root
+wp core install
+#wp core install --path=/var/www/html --title=CYCLONE --admin_user=cycloneadmin --admin_password=mllzsnXMAZWioX --url=http://localhost --admin_email=ilke.zilci@tu-berlin.de --allow-root
+
 
 #install and activate generic-openid-connect plugin
 wp plugin install generic-openid-connect.1.0.zip --activate --allow-root
