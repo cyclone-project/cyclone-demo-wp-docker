@@ -2,7 +2,7 @@ wordpressdb:
   image: mysql:5.7
   environment:
     - MYSQL_ROOT_PASSWORD=tastamam
-    - MYSQL_DATABASE=wpdatabase
+    - MYSQL_DATABASE=wordpress
   expose:
     - "3306"
 
@@ -13,5 +13,5 @@ wordpress:
   links:
     - wordpressdb:mysql
   ports:
-    - 8080:80
+    - "80:80"
 

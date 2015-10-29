@@ -1,0 +1,20 @@
+wordpressdb:
+  image: mysql:5.7
+  environment:
+    - MYSQL_ROOT_PASSWORD=tastamam
+    - MYSQL_DATABASE=wordpress
+  expose:
+    - "3306"
+
+wordpress:
+  build: components/wordpress
+  environment:
+    - WORDPRESS_DB_PASSWORD=tastamam
+  links:
+    - wordpressdb:mysql
+  ports:
+    - "80:80"
+  working_dir: /var/www/html
+  volumes:
+    - wordpressdockervolume/:/var/www/html/
+
