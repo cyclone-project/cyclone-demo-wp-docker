@@ -9,3 +9,5 @@ RewriteRule . /index.php [L]
 </IfModule>
 
 # END WordPress
+php_value xdebug.remote_autostart 1
+php_flag output_buffering On

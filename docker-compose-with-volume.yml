@@ -17,4 +17,4 @@ wordpress:
   working_dir: /var/www/html
   volumes:
     - wordpressdockervolume/:/var/www/html/
-
+    - components/wordpress/ext-xdebug.ini:/usr/local/etc/php/conf.d/ext-xdebug.ini

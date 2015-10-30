@@ -13,7 +13,7 @@ wp core install --allow-root
 
 
 #install and activate generic-openid-connect plugin
-wp plugin install generic-openid-connect.1.0.zip --activate --allow-root
+wp plugin install generic-openid-connect.1.0.zip --activate --allow-root --force
 
 #configure generic-openid-connect plugin
 #wp option add gen_openid_con_client_secret
