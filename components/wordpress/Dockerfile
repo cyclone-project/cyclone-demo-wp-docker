@@ -2,6 +2,9 @@ FROM wordpress
 MAINTAINER Ilke Zilci <ilke.zilci@tu-berlin.de>
 ENV TERM xterm
 
+#Install xdebug
+RUN apt-get update && apt-get install -y php5-xdebug
+
 #copy necessary configuration files for wp-cli to the container
 RUN mkdir /etc/wordpress-config
 ADD wp-setup.sh /etc/wordpress-config/wp-setup.sh
