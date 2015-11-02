@@ -5,20 +5,23 @@ This is a demonstration for the integration of a widely used application, in thi
 Usage
 -----
 To start a container with defaults, on the project root run:
-
-` docker-compose build `
-` docker-compose up -d `
+``` 
+docker-compose build
+docker-compose up -d 
+```
 
 When cloud application users send a request to wordpress-site-url/wp.login.php, they are redirected to the Keycloak Federated Identity Provider. They can select the identity provider of their choice and log in. Keycloak returns the token to the Wordpress instance and the Generic Open Id Connect Plugin creates a Wordpress user for the eduGAIN identity.
 
 Details
 -------
-To build the image, install the latest version of Docker and Docker Compose[1]. This image was tested with Docker 1.8.3 and Docker-Compose 1.4.2 on Ubuntu Trusty.
+To build the image, install the latest version of Docker and Docker Compose [1]. This image was tested with Docker 1.8.3 and Docker-Compose 1.4.2 on Ubuntu Trusty.
 
 The Wordpress configuration can be made in two steps by editing: 
+
 1. the docker compose configuration file
-	- docker-compose.yml if no external data volume is needed
-	- docker-compose.yml to be able to edit the container's files outside the container
+  - docker-compose.yml if no external data volume is needed
+  - docker-compose.yml to be able to edit the container's files outside the container
+
 2. the components/wordpress/wp-cli.yml file
 
 The configuration for the wordpress build in the docker-compose.yml must be consistent with the wp-cli.yml file:
@@ -46,4 +49,4 @@ requires
 
 ` url: "http://localhost" `
 
-[1]:(https://docs.docker.com/compose/install/) "Installation Docker and Docker Compose"
+[1]: https://docs.docker.com/compose/install/ "Installation Docker and Docker Compose"
