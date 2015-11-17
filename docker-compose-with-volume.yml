@@ -18,3 +18,4 @@ wordpress:
   volumes:
     - wordpressdockervolume/:/var/www/html/
     - components/wordpress/ext-xdebug.ini:/usr/local/etc/php/conf.d/ext-xdebug.ini
+

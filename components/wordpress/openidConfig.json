@@ -1,0 +1,10 @@
+{"gen_openid_con_client_id": "test", 
+ "gen_openid_con_ep_login": "https://federation.cyclone-project.eu/auth/realms/master/protocol/openid-connect/auth",
+ "gen_openid_con_ep_token":" https://federation.cyclone-project.eu/auth/realms/master/protocol/openid-connect/token ",
+ "gen_openid_con_ep_userinfo": "https://federation.cyclone-project.eu/auth/realms/master/protocol/openid-connect/userinfo",
+ "gen_openid_con_identity_key": "sub",
+ "gen_openid_con_no_sslverify": "1",
+ "gen_openid_con_scope":"openid",            
+ "gen_openid_con_use_autologin": "1",
+ "gen_openid_con_allowed_regex": "([A-Za-z0-9\\-\\_]+)"
+}
