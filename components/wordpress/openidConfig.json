@@ -6,5 +6,5 @@
  "gen_openid_con_no_sslverify": "1",
  "gen_openid_con_scope":"openid",            
  "gen_openid_con_use_autologin": "1",
- "gen_openid_con_allowed_regex": "([A-Za-z0-9\\-\\_]+)"
+ "gen_openid_con_allowed_regex": "[A-Za-z0-9\\-\\_]+"
 }
