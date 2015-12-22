@@ -1,6 +1,7 @@
 #wp-install.rb
 require 'json'
 
+puts %x{bash /opt/wp-parent-entrypoint.sh apache2}
 #info on wp cli installation
 puts %x{wp --info --allow-root}
 
@@ -8,7 +9,7 @@ puts %x{wp --info --allow-root}
 puts %x{wp core install --allow-root}
 
 #install and activate generic-openid-connect plugin
-puts %x{wp plugin install generic-openid-connect.1.0.zip --activate --allow-root --force}
+puts %x{wp plugin install /etc/wordpress-config/generic-openid-connect.1.0.zip --activate --allow-root --force}
 
 class FileReader
   def read
@@ -30,3 +31,5 @@ end
 openIdConfig.each do |key,value|
 puts %x{wp option get #{key} --allow-root}
 end
+
+%x{apachectl -k start && tail -f /dev/null}
