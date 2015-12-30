@@ -30,6 +30,9 @@ RUN chmod +x /usr/local/bin/wp
 RUN mkdir /root/.wp-cli
 ADD config.yml /root/.wp-cli/
 
+#add .htaccess with the php buffering option
+ADD .htaccess /etc/wordpress-config
+
 WORKDIR /var/www/html
 
 # Run the wp configration script
