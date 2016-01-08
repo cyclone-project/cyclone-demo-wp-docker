@@ -1,4 +1,4 @@
-#wp-install.rb
+#wordpress installation script, adds the necessary config for wp and its plugins to the db
 require 'json'
 require 'fileutils'
 
@@ -21,9 +21,7 @@ class FileReader
 end
 
 fileReader = FileReader.new
-
 fileContents = fileReader.read
-
 openIdConfig = JSON.parse(fileContents)
 
 openIdConfig.each do |key,value|

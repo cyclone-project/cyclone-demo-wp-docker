@@ -3,9 +3,9 @@ core config:
   dbuser: root
   dbpass: tastamam
 core install:
-    title: CYCLONE
-    admin_user: admin
-    admin_password: password
-    admin_email: ilke.zilci@tu-berlin.de  
+  title: CYCLONE
+  admin_user: admin
+  admin_password: password
+  admin_email: ilke.zilci@tu-berlin.de  
 path: /var/www/html
 url: "http://localhost"
