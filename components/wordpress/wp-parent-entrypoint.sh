@@ -97,6 +97,8 @@ EOPHP
 		sed -ri "s/($start\s*).*($end)$/\1$(sed_escape_rhs "$(php_escape "$value" "$var_type")")\3/" wp-config.php
 	}
 
+    echo "trying to set variables in wp-config.php: DB_PASSWORD:"
+    echo $WORDPRESS_DB_PASSWORD
 	set_config 'DB_HOST' "$WORDPRESS_DB_HOST"
 	set_config 'DB_USER' "$WORDPRESS_DB_USER"
 	set_config 'DB_PASSWORD' "$WORDPRESS_DB_PASSWORD"
@@ -140,7 +142,7 @@ EOPHP
 // database might not exist, so let's try creating it (just to be safe)
 $stderr = fopen('php://stderr', 'w');
 list($host, $port) = explode(':', $argv[1], 2);
-$maxTries = 10;
+$maxTries = 20;
 do {
 	$mysql = new mysqli($host, $argv[2], $argv[3], '', (int)$port);
 	if ($mysql->connect_error) {
