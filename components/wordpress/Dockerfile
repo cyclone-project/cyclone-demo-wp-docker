@@ -2,7 +2,7 @@ FROM wordpress
 MAINTAINER Ilke Zilci <ilke.zilci@tu-berlin.de>
 
 #Install xdebug
-RUN apt-get update && apt-get install -y php5-xdebug
+RUN apt-get update && apt-get install -y php5-xdebug && apt-get install -y nano
 
 # Install Ruby 2.1 using rvm and install gems
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3 &&\
