@@ -16,3 +16,4 @@ wordpress:
     - "80:80"
   volumes:
     - ./components/wordpress/wp-config.php:/var/www/html/wp-config.php
+ 
