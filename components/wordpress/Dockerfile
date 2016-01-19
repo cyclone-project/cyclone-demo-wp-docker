@@ -1,4 +1,4 @@
-FROM wordpress
+FROM wordpress:4.3.1-apache
 MAINTAINER Ilke Zilci <ilke.zilci@tu-berlin.de>
 
 #Install xdebug
