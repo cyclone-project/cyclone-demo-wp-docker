@@ -2,7 +2,7 @@ FROM wordpress:4.3.1-apache
 MAINTAINER Ilke Zilci <ilke.zilci@tu-berlin.de>
 
 #Install xdebug
-RUN apt-get update && apt-get install -y php5-xdebug && apt-get install -y nano
+RUN apt-get update && apt-get install -y php5-xdebug && apt-get install -y nano && apt-get install -y rsync
 
 # Install Ruby 2.1 using rvm and install gems
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3 &&\
@@ -14,8 +14,8 @@ ADD wp-install.rb /opt
 RUN chmod +x /opt/wp-install.rb
 
 #copy parent image's entrypoint script
-ADD wp-parent-entrypoint.sh /opt
-RUN chmod +x /opt/wp-parent-entrypoint.sh
+ADD wp-parent-entrypoint-new.sh /opt
+RUN chmod +x /opt/wp-parent-entrypoint-new.sh
 
 #copy plugin
 RUN mkdir /etc/wordpress-config

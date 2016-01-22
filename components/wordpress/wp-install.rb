@@ -2,7 +2,7 @@
 require 'json'
 require 'fileutils'
 
-puts %x{bash /opt/wp-parent-entrypoint.sh apache2}
+puts %x{bash /opt/wp-parent-entrypoint-new.sh apache2}
 #info on wp cli installation
 puts %x{wp --info --allow-root}
 
