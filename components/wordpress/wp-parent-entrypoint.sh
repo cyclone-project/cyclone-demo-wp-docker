@@ -63,6 +63,11 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 
 	# TODO handle WordPress upgrades magically in the same way, but only if wp-includes/version.php's $wp_version is less than /usr/src/wordpress/wp-includes/version.php's $wp_version
 
+	# version 4.4.1 decided to switch to windows line endings, that breaks our seds and awks
+	# https://github.com/docker-library/wordpress/issues/116
+	# https://github.com/WordPress/WordPress/commit/1acedc542fba2482bab88ec70d4bea4b997a92e4
+	sed -ri 's/\r\n|\r/\n/g' wp-config*
+
 	if [ ! -e wp-config.php ]; then
 		awk '/^\/\*.*stop editing.*\*\/$/ && c == 0 { c = 1; system("cat") } { print }' wp-config-sample.php > wp-config.php <<'EOPHP'
 // If we're behind a proxy server and using HTTPS, we need to alert Wordpress of that fact
@@ -97,8 +102,6 @@ EOPHP
 		sed -ri "s/($start\s*).*($end)$/\1$(sed_escape_rhs "$(php_escape "$value" "$var_type")")\3/" wp-config.php
 	}
 
-    echo "trying to set variables in wp-config.php: DB_PASSWORD:"
-    echo $WORDPRESS_DB_PASSWORD
 	set_config 'DB_HOST' "$WORDPRESS_DB_HOST"
 	set_config 'DB_USER' "$WORDPRESS_DB_USER"
 	set_config 'DB_PASSWORD' "$WORDPRESS_DB_PASSWORD"
@@ -142,7 +145,7 @@ EOPHP
 // database might not exist, so let's try creating it (just to be safe)
 $stderr = fopen('php://stderr', 'w');
 list($host, $port) = explode(':', $argv[1], 2);
-$maxTries = 20;
+$maxTries = 10;
 do {
 	$mysql = new mysqli($host, $argv[2], $argv[3], '', (int)$port);
 	if ($mysql->connect_error) {
