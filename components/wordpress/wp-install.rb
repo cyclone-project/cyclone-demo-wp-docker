@@ -36,6 +36,7 @@ end
 #copy .htaccess 
 FileUtils.cp('/etc/wordpress-config/.htaccess', '/var/www/html')
 
-#copy pre configured wp-config.php TODO change if the parent image works now
+wp option update home $hostname --allow-root
+wp option update siteurl $hostname --allow-root
 
 %x{apachectl -k start && tail -f /dev/null}
