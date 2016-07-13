@@ -15,8 +15,8 @@ puts %x{wp plugin install /etc/wordpress-config/generic-openid-connect.1.0.zip -
 
 class FileReader
   def read
-    file = File.open("/etc/wordpress-config/openidConfig.json", "rb")
-    #file = File.open("openidConfig.json", "rb")
+    #file = File.open("/etc/wordpress-config/openidConfig.json", "rb")
+    file = File.open("openidConfig.json", "rb")
     file.read
   end
 end
@@ -34,9 +34,11 @@ puts %x{wp option get #{key} --allow-root}
 end
 
 #copy .htaccess 
-FileUtils.cp('/etc/wordpress-config/.htaccess', '/var/www/html')
+#FileUtils.cp('/etc/wordpress-config/.htaccess', '/var/www/html')
 
-wp option update home $hostname --allow-root
-wp option update siteurl $hostname --allow-root
+urlfile = File.open("url.txt", "rb")
+url = urlfile.read
+puts %x{wp option update home '#{url}' --allow-root}
+puts %x{wp option update siteurl '#{url}' --allow-root}
 
-%x{apachectl -k start && tail -f /dev/null}
+#%x{apachectl -k start && tail -f /dev/null}
