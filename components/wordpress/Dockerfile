@@ -21,6 +21,7 @@ RUN chmod +x /opt/wp-parent-entrypoint.sh
 RUN mkdir /etc/wordpress-config
 ADD generic-openid-connect.1.0.zip /etc/wordpress-config/
 ADD openidConfig.json /etc/wordpress-config/
+ADD url.txt /etc/wordpress-config/
 
 #install wp-cli
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar &&\

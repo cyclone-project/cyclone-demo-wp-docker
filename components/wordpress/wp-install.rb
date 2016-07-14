@@ -42,4 +42,4 @@ url = urlfile.read
 puts %x{wp option update home '#{url}' --allow-root}
 puts %x{wp option update siteurl '#{url}' --allow-root}
 
-#%x{apachectl -k start && tail -f /dev/null}
+%x{apachectl -k start && tail -f /dev/null}
