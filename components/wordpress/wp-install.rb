@@ -15,8 +15,8 @@ puts %x{wp plugin install /etc/wordpress-config/generic-openid-connect.1.0.zip -
 
 class FileReader
   def read
-    #file = File.open("/etc/wordpress-config/openidConfig.json", "rb")
-    file = File.open("openidConfig.json", "rb")
+    file = File.open("/etc/wordpress-config/openidConfig.json", "rb")
+    #file = File.open("openidConfig.json", "rb")
     file.read
   end
 end
@@ -34,9 +34,10 @@ puts %x{wp option get #{key} --allow-root}
 end
 
 #copy .htaccess 
-#FileUtils.cp('/etc/wordpress-config/.htaccess', '/var/www/html')
+#with the current container apache config this does not work, we have to add /usr/local/etc/php/php.ini file with output_buffering = on 
+FileUtils.cp('/etc/wordpress-config/.htaccess', '/var/www/html')
 
-urlfile = File.open("url.txt", "rb")
+urlfile = File.open("/etc/wordpress-config/url.txt", "rb")
 url = urlfile.read
 puts %x{wp option update home '#{url}' --allow-root}
 puts %x{wp option update siteurl '#{url}' --allow-root}
