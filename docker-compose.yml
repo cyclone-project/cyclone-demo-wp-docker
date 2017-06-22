@@ -3,8 +3,8 @@ wordpressdb:
   environment:
     - MYSQL_ROOT_PASSWORD=tastamam
     - MYSQL_DATABASE=wordpress
-  ports:
-    - "3306:3306"
+  expose:
+    - "3306"
 
 wordpress:
   build: components/wordpress
@@ -15,4 +15,3 @@ wordpress:
   ports:
     - "80:80"
 
- 
