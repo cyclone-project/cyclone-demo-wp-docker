@@ -6,7 +6,9 @@ RUN apt-get update && apt-get install -y php5-xdebug && apt-get install -y nano 
 
 # Install Ruby 2.1 using rvm and install gems
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3 &&\
-    curl -sSL https://get.rvm.io | bash -s stable --ruby=2.1 &&\
+    # use install script from stable to install stable version
+    # workaround for https://github.com/rvm/rvm/issues/4068
+    curl -sSL https://raw.githubusercontent.com/rvm/rvm/stable/binscripts/rvm-installer | bash -s stable --ruby=2.1 &&\
     /bin/bash -c "source /usr/local/rvm/scripts/rvm && gem install json"
 
 #copy installation script
