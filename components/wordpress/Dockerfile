@@ -39,5 +39,7 @@ ADD .htaccess /etc/wordpress-config
 
 WORKDIR /var/www/html
 
+ENV OPENIDCONF_PATH=/etc/wordpress-config/openidConfig.json
+ENV WPURLFILE_PATH=/etc/wordpress-config/url.txt
 # Run the wp configration script
 CMD ["/bin/bash", "-c", "source /usr/local/rvm/scripts/rvm && ruby /opt/wp-install.rb"]

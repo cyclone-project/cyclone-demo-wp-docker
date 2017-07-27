@@ -13,17 +13,12 @@ puts %x{wp core install --allow-root}
 #install and activate generic-openid-connect plugin
 puts %x{wp plugin install /etc/wordpress-config/generic-openid-connect.1.0.zip --activate --allow-root --force}
 
-class FileReader
-  def read
-    file = File.open("/etc/wordpress-config/openidConfig.json", "rb")
-    #file = File.open("openidConfig.json", "rb")
-    file.read
-  end
+openIdConfFile = ENV['OPENIDCONF_PATH']
+if !File.file?(openIdConfFile)
+  abort('ERROR Given Path to OpenId-Connect Configuration is not a valid file')
 end
-
-fileReader = FileReader.new
-fileContents = fileReader.read
-openIdConfig = JSON.parse(fileContents)
+fileContent = File.read(openIdConfFile)
+openIdConfig = JSON.parse(fileContent)
 
 openIdConfig.each do |key,value|
 puts %x{wp option update #{key} '#{value}' --allow-root}
@@ -33,13 +28,18 @@ openIdConfig.each do |key,value|
 puts %x{wp option get #{key} --allow-root}
 end
 
-#copy .htaccess 
-#with the current container apache config this does not work, we have to add /usr/local/etc/php/php.ini file with output_buffering = on 
+#copy .htaccess
+#with the current container apache config this does not work, we have to add /usr/local/etc/php/php.ini file with output_buffering = on
 FileUtils.cp('/etc/wordpress-config/.htaccess', '/var/www/html')
 
-urlfile = File.open("/etc/wordpress-config/url.txt", "rb")
-url = urlfile.read
+urlfile = ENV['WPURLFILE_PATH']
+if !File.file?(urlfile)
+  abort('ERROR Given Path to Wordpress URL Configuration is not a valid file')
+end
+url = File.read(urlfile)
+
 puts %x{wp option update home '#{url}' --allow-root}
 puts %x{wp option update siteurl '#{url}' --allow-root}
 
-%x{apachectl -k start && tail -f /dev/null}
+# use exec to hand process over to apache and foreground to get log messages
+exec "apache2-foreground"

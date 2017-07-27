@@ -166,4 +166,3 @@ $mysql->close();
 EOPHP
 fi
 
-exec "$@"
