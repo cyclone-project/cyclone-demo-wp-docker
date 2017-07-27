@@ -1,0 +1,22 @@
+sudo: required
+
+dist: trusty
+
+language: php
+
+group: edge
+
+services:
+  - docker
+
+branches:
+  only:
+    - master
+
+before_install:
+  - docker -v
+  - docker-compose -v
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+
+script:
+  - cd components/wordpress && docker build -t cycloneproject/demo-wp . && docker push cycloneproject/demo-wp
