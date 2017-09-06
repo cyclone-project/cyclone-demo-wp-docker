@@ -145,7 +145,7 @@ EOPHP
 // database might not exist, so let's try creating it (just to be safe)
 $stderr = fopen('php://stderr', 'w');
 list($host, $port) = explode(':', $argv[1], 2);
-$maxTries = 10;
+$maxTries = 100;
 do {
 	$mysql = new mysqli($host, $argv[2], $argv[3], '', (int)$port);
 	if ($mysql->connect_error) {
